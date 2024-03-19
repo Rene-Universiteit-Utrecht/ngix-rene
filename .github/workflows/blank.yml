@@ -16,7 +16,7 @@ on:
 env:
   DOCKERHUB_USERNAME_RENE: ${{ secrets.DOCKERHUB_USERNAME_RENE }}
   DOCKERHUB_TOKEN_RENE: ${{ secrets.DOCKERHUB_TOKEN_RENE }}
-  DOCKERHUB_REPO: checking 
+  DOCKERHUB_REPO: prietpraat 
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -34,7 +34,7 @@ jobs:
         run: echo ${{ env.DOCKERHUB_TOKEN_RENE }} | docker login -u ${{ env.DOCKERHUB_USERNAME_RENE }} --password-stdin
 
       - name: Build Docker image
-        run: docker build -t ${{ env.DOCKERHUB_USERNAME_RENE }}/${{ env.DOCKERHUB_REPO }}:latest -f uu-openshift-docs/Dockerfile .
+        run: docker build -t ${{ env.DOCKERHUB_USERNAME_RENE }}/${{ env.DOCKERHUB_REPO }}:latest .
 
       - name: Push Docker image to Docker Hub
         run: docker push  ${{ env.DOCKERHUB_USERNAME_RENE }}/${{ env.DOCKERHUB_REPO }}:latest
